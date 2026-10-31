@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX PEAK 頂峰私人銀行 | 尊榮信用卡與頂級保險服務</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#d4af37',
+                            light: '#f3e5ab',
+                            dark: '#aa8c2c',
+                            metallic: '#bf9b30'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8c2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+        }
+        .obsidian-card {
+            background: linear-gradient(145deg, rgba(20, 24, 33, 0.95), rgba(10, 12, 16, 0.98));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .obsidian-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(212, 175, 55, 0.3);
+        }
+        .luxury-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-gold-dark selection:text-white transition-colors duration-300">
+
+    <!-- Top Luxury Announcement Banner -->
+    <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-gold/20 py-2.5 px-4 text-center text-xs tracking-wider text-gold-light flex items-center justify-center gap-2">
+        <i class="fa-solid fa-crown text-gold"></i>
+        <span>【尊榮禮遇】即日起申辦頂峰極致黑金卡，尊享全球無限次機場貴賓室與私人管家專屬禮遇。</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-9 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-xl border-b border-gold/20 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-gold-dark via-gold to-gold-light p-0.5 shadow-lg shadow-gold/20 group-hover:scale-105 transition">
+                    <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-gold">
+                        <i class="fa-solid fa-vault text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-widest text-white">APEX <span class="gold-gradient-text">PEAK</span></span>
+                    <span class="block text-[10px] tracking-[0.2em] text-slate-400 uppercase font-medium">Private Banking</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#cards" class="text-slate-300 hover:text-gold transition">頂級信用卡</a>
+                <a href="#insurance" class="text-slate-300 hover:text-gold transition">私人保險規劃</a>
+                <a href="#rewards-calc" class="text-slate-300 hover:text-gold transition">智能回饋試算</a>
+                <a href="#member-center" class="text-gold font-bold hover:underline transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gem"></i> 會員中心
+                </a>
+                <a href="#tools" class="text-slate-300 hover:text-gold transition">尊榮工具</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-slate-900 border border-gold/30 text-gold hover:bg-gold/10 transition shadow-sm" title="切換深淺色模式">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <a href="#cards" class="hidden sm:inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-slate-950 bg-gradient-to-r from-gold-light via-gold to-gold-dark rounded-full hover:brightness-110 shadow-lg shadow-gold/25 transition transform hover:-translate-y-0.5">
+                    立即預約申辦
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-t border-gold/20 px-6 py-6 space-y-4">
+            <a href="#cards" class="block text-slate-300 font-medium">頂級信用卡</a>
+            <a href="#insurance" class="block text-slate-300 font-medium">私人保險規劃</a>
+            <a href="#rewards-calc" class="block text-slate-300 font-medium">智能回饋試算</a>
+            <a href="#member-center" class="block text-gold font-bold">會員中心</a>
+            <a href="#tools" class="block text-slate-300 font-medium">尊榮工具</a>
+        </div>
+    </nav>
+
+    <!-- Header Spacing -->
+    <div class="h-28"></div>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-24 lg:py-36 bg-slate-950 text-white">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 luxury-glow"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold tracking-widest uppercase mb-6 shadow-lg shadow-gold/10">
+                <i class="fa-solid fa-star"></i> PRIVATE WEALTH MANAGEMENT 2026
+            </span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                定義您的財富新高度 <br><span class="gold-gradient-text">尊榮無界 極致非凡</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                結合頂級信用卡無上限回饋、全方位私人保險規劃與頂峰黑卡會員尊榮禮遇，為層峰人士打造無可比擬的卓越金融體驗。
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#cards" class="px-8 py-4 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark text-slate-950 font-bold text-base shadow-xl shadow-gold/25 hover:scale-105 transition text-center">
+                    探索頂級信用卡
+                </a>
+                <a href="#insurance" class="px-8 py-4 rounded-full bg-slate-900 border border-gold/40 text-gold font-bold text-base hover:bg-gold/10 transition text-center shadow-lg">
+                    私人保險試算
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-gold/20">
+                <div class="p-4 rounded-2xl bg-slate-900/60 border border-gold/20">
+                    <p class="text-3xl font-extrabold gold-gradient-text">5.0%</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider">海外頂級回饋無上限</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/60 border border-gold/20">
+                    <p class="text-3xl font-extrabold gold-gradient-text">24/7</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider">私人管家專屬服務</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/60 border border-gold/20">
+                    <p class="text-3xl font-extrabold gold-gradient-text">100%</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider">全面資產保障計畫</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/60 border border-gold/20">
+                    <p class="text-3xl font-extrabold gold-gradient-text">15 min</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider">快速理賠極速撥款</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credit Cards Section -->
+    <section id="cards" class="py-24 bg-slate-900/50 border-t border-gold/20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold tracking-widest uppercase text-xs">EXCLUSIVE CARDS</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">尊榮信用卡極致系列</h2>
+                <p class="text-slate-400 mt-4 text-lg">為您量身打造的頂級金融名片，解鎖世界每個角落的尊榮禮遇。</p>
+            </div>
+
+            <!-- Card Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="card-filter-btn px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-r from-gold to-gold-dark text-slate-950 shadow-lg shadow-gold/20 transition" data-filter="all">全部卡片</button>
+                <button class="card-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-slate-900 border border-gold/30 text-slate-300 hover:text-gold hover:border-gold transition" data-filter="cashback">現金回饋</button>
+                <button class="card-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-slate-900 border border-gold/30 text-slate-300 hover:text-gold hover:border-gold transition" data-filter="miles">哩程累積</button>
+                <button class="card-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-slate-900 border border-gold/30 text-slate-300 hover:text-gold hover:border-gold transition" data-filter="gift">新戶首刷禮</button>
+                <button class="card-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-slate-900 border border-gold/30 text-slate-300 hover:text-gold hover:border-gold transition" data-filter="no-fee">免年費</button>
+            </div>
+
+            <!-- Card Grid -->
+            <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="credit-card-item obsidian-card rounded-3xl overflow-hidden flex flex-col transition hover:scale-[1.02]" data-tags="cashback gift">
+                    <div class="h-52 bg-gradient-to-tr from-slate-950 via-zinc-900 to-slate-900 p-6 flex flex-col justify-between text-white relative overflow-hidden border-b border-gold/20">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-gold/15 rounded-full blur-3xl"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="font-bold tracking-widest text-gold text-sm">APEX OBSIDIAN</span>
+                            <i class="fa-solid fa-sim-card text-2xl text-gold-light"></i>
+                        </div>
+                        <div class="z-10">
+                            <p class="text-xs text-slate-400">極致現金回饋黑金卡</p>
+                            <p class="text-2xl font-mono tracking-widest mt-1 text-gold-light">•••• 8888</p>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold text-white">極致現金回饋黑金卡</h3>
+                                <span class="bg-gold/20 text-gold border border-gold/30 text-xs px-3 py-1 rounded-full font-semibold">首刷送行李箱</span>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">國內無腦刷 3.0% 現金回饋無上限，指定海外頂級消費最高 6% 回饋。</p>
+                            
+                            <!-- Welcome Gift Progress -->
+                            <div class="bg-slate-950/80 p-4 rounded-2xl border border-gold/20 mb-6">
+                                <div class="flex justify-between text-xs font-semibold mb-2">
+                                    <span class="text-slate-300">新戶首刷禮門檻</span>
+                                    <span class="text-gold">核卡30天內刷滿 $6,000</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-gold-dark to-gold-light h-full w-3/4 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-gift text-gold mr-1.5"></i>贈品：28吋尊爵鋁框行李箱 (市價 $4,980)</p>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i>國內消費 3.0% 無上限</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i>海外消費最高 6% 回饋</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i>免費機場貴賓室每年 6 次</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openApplyModal('極致現金回饋黑金卡')" class="flex-1 bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 font-bold py-3.5 px-4 rounded-2xl shadow-lg transition text-center text-sm">
+                                立即申辦
+                            </button>
+                            <label class="flex items-center text-sm text-slate-400 cursor-pointer select-none">
+                                <input type="checkbox" class="compare-checkbox w-4 h-4 text-gold rounded border-slate-700 bg-slate-900 focus:ring-gold mr-1.5" value="極致現金回饋黑金卡"> 比較
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="credit-card-item obsidian-card rounded-3xl overflow-hidden flex flex-col transition hover:scale-[1.02]" data-tags="miles gift">
+                    <div class="h-52 bg-gradient-to-tr from-slate-950 via-blue-950 to-slate-900 p-6 flex flex-col justify-between text-white relative overflow-hidden border-b border-gold/20">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="font-bold tracking-widest text-sky-400 text-sm">APEX AIRWAYS</span>
+                            <i class="fa-solid fa-plane-departure text-2xl text-sky-300"></i>
+                        </div>
+                        <div class="z-10">
+                            <p class="text-xs text-slate-400">環球無限極致哩程卡</p>
+                            <p class="text-2xl font-mono tracking-widest mt-1 text-sky-300">•••• 9999</p>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold text-white">環球無限極致哩程卡</h3>
+                                <span class="bg-sky-500/20 text-sky-400 border border-sky-500/30 text-xs px-3 py-1 rounded-full font-semibold">首刷送萬哩</span>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">哩程終身有效不歸零，消費 12 元累積 1 哩，解鎖全球頂級航空頭等艙兌換權益。</p>
+                            
+                            <!-- Welcome Gift Progress -->
+                            <div class="bg-slate-950/80 p-4 rounded-2xl border border-gold/20 mb-6">
+                                <div class="flex justify-between text-xs font-semibold mb-2">
+                                    <span class="text-slate-300">新戶首刷禮門檻</span>
+                                    <span class="text-sky-400">核卡60天內刷滿 $12,000</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-sky-500 to-blue-400 h-full w-1/2 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-gift text-sky-400 mr-1.5"></i>贈品：首刷好禮加贈 15,000 哩程數</p>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-sky-400 mr-3"></i>海外消費 12元 = 1哩</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-sky-400 mr-3"></i>免費全球環亞貴賓室無限次</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-sky-400 mr-3"></i>年年享免費機場接送 6 次</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openApplyModal('環球無限極致哩程卡')" class="flex-1 bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 font-bold py-3.5 px-4 rounded-2xl shadow-lg transition text-center text-sm">
+                                立即申辦
+                            </button>
+                            <label class="flex items-center text-sm text-slate-400 cursor-pointer select-none">
+                                <input type="checkbox" class="compare-checkbox w-4 h-4 text-gold rounded border-slate-700 bg-slate-900 focus:ring-gold mr-1.5" value="環球無限極致哩程卡"> 比較
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="credit-card-item obsidian-card rounded-3xl overflow-hidden flex flex-col transition hover:scale-[1.02]" data-tags="cashback no-fee">
+                    <div class="h-52 bg-gradient-to-tr from-slate-950 via-emerald-950 to-slate-900 p-6 flex flex-col justify-between text-white relative overflow-hidden border-b border-gold/20">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="font-bold tracking-widest text-emerald-400 text-sm">APEX PREMIER</span>
+                            <i class="fa-solid fa-bag-shopping text-2xl text-emerald-300"></i>
+                        </div>
+                        <div class="z-10">
+                            <p class="text-xs text-slate-400">數位饗宴御璽黑卡</p>
+                            <p class="text-2xl font-mono tracking-widest mt-1 text-emerald-300">•••• 6666</p>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-2xl font-bold text-white">數位饗宴御璽黑卡</h3>
+                                <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-semibold">免年費</span>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">專為高端網購與米其林餐飲愛好者打造，指定電商與餐飲平台最高 7% 回饋。</p>
+                            
+                            <!-- Welcome Gift Progress -->
+                            <div class="bg-slate-950/80 p-4 rounded-2xl border border-gold/20 mb-6">
+                                <div class="flex justify-between text-xs font-semibold mb-2">
+                                    <span class="text-slate-300">新戶首刷禮門檻</span>
+                                    <span class="text-emerald-400">核卡30天內刷滿 $3,000</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full w-full rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-2"><i class="fa-solid fa-gift text-emerald-400 mr-1.5"></i>贈品：無線手持吸塵器或 $1,000 刷卡金</p>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i>指定網購平台 7% 回饋</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i>米其林餐廳 85 折優惠</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-3"></i>電子帳單永久免年費</li>
+                            </ul>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openApplyModal('數位饗宴御璽黑卡')" class="flex-1 bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 font-bold py-3.5 px-4 rounded-2xl shadow-lg transition text-center text-sm">
+                                立即申辦
+                            </button>
+                            <label class="flex items-center text-sm text-slate-400 cursor-pointer select-none">
+                                <input type="checkbox" class="compare-checkbox w-4 h-4 text-gold rounded border-slate-700 bg-slate-900 focus:ring-gold mr-1.5" value="數位饗宴御璽黑卡"> 比較
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Comparison Floating Bar -->
+            <div id="compare-bar" class="hidden fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-950/95 text-white px-8 py-4 rounded-3xl shadow-2xl border border-gold/40 flex items-center gap-8 z-40 backdrop-blur-xl">
+                <span id="compare-count" class="text-sm font-semibold text-gold">已選擇 0 張卡片 (最多 3 張)</span>
+                <div class="flex gap-4">
+                    <button onclick="openCompareModal()" class="bg-gradient-to-r from-gold to-gold-dark text-slate-950 px-6 py-2.5 rounded-2xl text-sm font-bold shadow-lg hover:brightness-110 transition">立即並排比較</button>
+                    <button onclick="clearCompare()" class="text-slate-400 hover:text-white text-sm">清除</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rewards Calculator Section -->
+    <section id="rewards-calc" class="py-24 bg-slate-950 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold tracking-widest uppercase text-xs">SMART CALCULATOR</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">智能刷卡回饋試算機</h2>
+                <p class="text-slate-400 mt-4 text-lg">輸入您每月的預估消費金額，頂峰 AI 將為您精準推算出最高回饋組合。</p>
+            </div>
+
+            <div class="obsidian-card rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">國內一般消費 / 月 (NT$)</label>
+                        <input type="number" id="calc-domestic" value="20000" class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3.5 text-white focus:ring-2 focus:ring-gold outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">海外頂級消費 / 月 (NT$)</label>
+                        <input type="number" id="calc-overseas" value="15000" class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3.5 text-white focus:ring-2 focus:ring-gold outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">指定網購 / 米其林餐飲 / 月 (NT$)</label>
+                        <input type="number" id="calc-online" value="10000" class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3.5 text-white focus:ring-2 focus:ring-gold outline-none">
+                    </div>
+                    <button onclick="calculateRewards()" class="w-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:brightness-110 text-slate-950 font-extrabold py-4 px-6 rounded-2xl shadow-xl transition">
+                        計算最佳推薦黑金卡
+                    </button>
+                </div>
+
+                <div id="calc-result" class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-8 rounded-3xl shadow-2xl flex flex-col justify-between border border-gold/30 h-full">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gold font-bold">AI 私人銀行智慧推薦</span>
+                        <h3 id="best-card-name" class="text-2xl font-extrabold mt-2 text-white">極致現金回饋黑金卡</h3>
+                        <p id="best-card-desc" class="text-slate-400 text-sm mt-2">根據您的消費組合，此卡可為您賺取最高額現金回饋。</p>
+                    </div>
+                    <div class="my-8 py-6 border-y border-gold/20">
+                        <p class="text-xs text-slate-400">預估每月總回饋價值</p>
+                        <p id="best-card-reward" class="text-4xl font-extrabold gold-gradient-text mt-1">NT$ 2,450</p>
+                    </div>
+                    <button onclick="openApplyModal(document.getElementById('best-card-name').innerText)" class="w-full bg-white text-slate-950 hover:bg-gold-light font-bold py-3.5 rounded-2xl transition text-center shadow-lg">
+                        立即申辦此卡
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Center Section -->
+    <section id="member-center" class="py-24 bg-slate-900/40 border-t border-gold/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold tracking-widest uppercase text-xs">VIP BLACK LOUNGE</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">頂峰尊榮會員中心</h2>
+                <p class="text-slate-400 mt-4 text-lg">專屬黑卡會員等級解鎖、哩程與刷卡金兌換，尊享私人管家極致禮遇。</p>
+            </div>
+
+            <!-- Member Card Info & Tiers -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Profile Summary Card -->
+                <div class="obsidian-card rounded-3xl p-8 flex flex-col justify-between shadow-2xl">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-gold/20 text-gold border border-gold/40 text-xs px-3.5 py-1.5 rounded-full font-bold">
+                                <i class="fa-solid fa-crown mr-1.5"></i> 尊榮黑金卡會員
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">ID: APEX-99881</span>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-gold-dark via-gold to-gold-light flex items-center justify-center text-slate-950 font-extrabold text-2xl shadow-xl">
+                                張
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">張國榮 董事長</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">私人理財顧問：陳副總經理</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-6 border-t border-gold/20">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400">可用刷卡金</span>
+                            <span class="font-bold gold-gradient-text text-base">NT$ 12,850</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400">可用哩程點數</span>
+                            <span class="font-bold text-sky-400 text-base">58,200 哩</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier Benefits & Progress -->
+                <div class="lg:col-span-2 obsidian-card rounded-3xl p-8 flex flex-col justify-between shadow-2xl">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-bold text-white">會員等級進度 (尊榮黑金卡)</h3>
+                            <span class="text-xs font-semibold text-gold">已解鎖頂級私人銀行全部權益</span>
+                        </div>
+                        <div class="w-full bg-slate-900 h-3 rounded-full overflow-hidden mb-8 border border-gold/20">
+                            <div class="bg-gradient-to-r from-gold-dark via-gold to-gold-light h-full w-full rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-slate-950/80 p-5 rounded-2xl border border-gold/20 text-center">
+                                <i class="fa-solid fa-plane text-2xl text-gold mb-2.5"></i>
+                                <p class="text-xs text-slate-400">全球機場貴賓室</p>
+                                <p class="text-sm font-bold text-white mt-1">無限次免費使用</p>
+                            </div>
+                            <div class="bg-slate-950/80 p-5 rounded-2xl border border-gold/20 text-center">
+                                <i class="fa-solid fa-car text-2xl text-gold mb-2.5"></i>
+                                <p class="text-xs text-slate-400">豪華機場接送</p>
+                                <p class="text-sm font-bold text-white mt-1">本年度剩餘 12 次</p>
+                            </div>
+                            <div class="bg-slate-950/80 p-5 rounded-2xl border border-gold/20 text-center">
+                                <i class="fa-solid fa-headset text-2xl text-gold mb-2.5"></i>
+                                <p class="text-xs text-slate-400">24小時私人管家</p>
+                                <p class="text-sm font-bold text-white mt-1">專屬顧問隨伺在側</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-4">
+                        <button onclick="openRedeemModal()" class="bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 font-bold px-8 py-3 rounded-2xl text-sm shadow-lg transition">
+                            哩程 / 刷卡金兌換
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance Section Placeholder & Quick Link -->
+    <section id="insurance" class="py-24 bg-slate-950 border-t border-gold/20 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <span class="text-gold font-semibold tracking-widest uppercase text-xs">PRIVATE INSURANCE</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2">頂級私人保險與資產傳承</h2>
+            <p class="text-slate-400 mt-4 text-lg">為您與家族提供最高規格的醫療保障、海外旅平險與資產安全防護網。</p>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="#member-center" class="px-8 py-4 rounded-full bg-slate-900 border border-gold/40 text-gold font-bold hover:bg-gold/10 transition shadow-lg">
+                    預約資產保險顧問
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credit Card Apply Modal -->
+    <div id="apply-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="obsidian-card rounded-3xl max-w-xl w-full p-8 shadow-2xl border border-gold/40 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6 border-b border-gold/20 pb-4">
+                <div>
+                    <span class="text-xs uppercase text-gold font-bold tracking-wider">ONLINE APPLICATION</span>
+                    <h3 id="modal-card-title" class="text-2xl font-bold text-white mt-1">線上申辦尊榮黑金卡</h3>
+                </div>
+                <button onclick="closeApplyModal()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="apply-form" onsubmit="submitApplyForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">中文姓名</label>
+                    <input type="text" required class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none" placeholder="例如：張國榮">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">身分證字號</label>
+                        <input type="text" required class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none" placeholder="例如：A123456789">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">聯絡手機</label>
+                        <input type="tel" required class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none" placeholder="0912-345-678">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">電子信箱</label>
+                    <input type="email" required class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none" placeholder="example@apexpeak.com">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">年收入估算 (NT$)</label>
+                        <select class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none">
+                            <option>150 萬 - 300 萬元</option>
+                            <option selected>300 萬 - 600 萬元</option>
+                            <option>600 萬元以上</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">新戶首刷禮選擇</label>
+                        <select id="modal-gift-select" class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none">
+                            <option>28吋尊爵鋁框行李箱</option>
+                            <option>無線手持吸塵器</option>
+                            <option>刷卡金 $2,000 元</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:brightness-110 text-slate-950 font-extrabold py-4 px-6 rounded-2xl shadow-xl transition text-center">
+                        確認送出尊榮申請
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Redeem Modal -->
+    <div id="redeem-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="obsidian-card rounded-3xl max-w-md w-full p-8 shadow-2xl border border-gold/40">
+            <div class="flex justify-between items-center mb-6 border-b border-gold/20 pb-4">
+                <h3 class="text-xl font-bold text-white">會員點數與刷卡金兌換</h3>
+                <button onclick="closeRedeemModal()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-4">
+                <p class="text-sm text-slate-300">您目前擁有 <span class="text-sky-400 font-bold">58,200 哩</span> 點數與 <span class="text-gold font-bold">NT$ 12,850</span> 刷卡金可供頂級折抵。</p>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">選擇兌換項目</label>
+                    <select class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none">
+                        <option>折抵次期帳單刷卡金 ($3,000)</option>
+                        <option>頭等艙升等憑證 (2張)</option>
+                        <option>米其林三星雙人晚宴券</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">兌換數量</label>
+                    <input type="number" min="1" max="5" value="1" class="w-full bg-slate-900 border border-gold/30 rounded-2xl px-4 py-3 text-white focus:ring-2 focus:ring-gold outline-none">
+                </div>
+                <button onclick="confirmRedeem()" class="w-full bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 font-bold py-3.5 rounded-2xl shadow-lg transition mt-2">
+                    確認立即兌換
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Floating Drawer -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button id="chatbot-toggle" onclick="toggleChatbot()" class="w-16 h-16 bg-gradient-to-tr from-gold-dark via-gold to-gold-light hover:brightness-110 text-slate-950 rounded-full shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-110 shadow-gold/30">
+            <i class="fa-solid fa-crown"></i>
+        </button>
+        <div id="chatbot-box" class="hidden absolute bottom-24 right-0 w-80 sm:w-96 obsidian-card rounded-3xl shadow-2xl border border-gold/40 overflow-hidden flex flex-col h-[500px]">
+            <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white px-6 py-4 flex justify-between items-center border-b border-gold/20">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-3 h-3 bg-gold rounded-full animate-pulse"></div>
+                    <span class="font-bold text-sm text-gold">APEX 尊榮私人管家</span>
+                </div>
+                <button onclick="toggleChatbot()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-sm">
+                <div class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold text-xs shrink-0">VIP</div>
+                    <div class="bg-slate-900 text-slate-200 p-3 rounded-2xl max-w-[80%] border border-gold/20">
+                        您好，尊敬的貴賓。我是您的 24 小時專屬私人管家，請問需要為您安排黑金卡申辦、哩程兌換或私人保險諮詢嗎？
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 border-t border-gold/20 flex gap-2 bg-slate-950">
+                <input type="text" id="chat-input" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="請輸入您的需求..." class="flex-1 bg-slate-900 border border-gold/30 rounded-2xl px-4 py-2.5 text-sm text-white focus:ring-2 focus:ring-gold outline-none">
+                <button onclick="sendChatMessage()" class="bg-gradient-to-r from-gold to-gold-dark hover:brightness-110 text-slate-950 px-4 py-2.5 rounded-2xl text-sm font-bold transition"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Message Box -->
+    <div id="notification-box" class="hidden fixed top-8 right-8 z-50 obsidian-card text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold/40 flex items-center space-x-3 transition">
+        <i class="fa-solid fa-circle-check text-gold text-xl"></i>
+        <span id="notification-text" class="text-sm font-semibold">通知訊息</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-gold-dark to-gold-light rounded-xl flex items-center justify-center text-slate-950 font-bold text-lg shadow">
+                        <i class="fa-solid fa-vault"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white tracking-wider">APEX PEAK</span>
+                </div>
+                <p class="text-sm text-slate-400">專為層峰人士打造的頂級私人銀行，提供頂級信用卡、資產管理與尊榮會員禮遇。</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-gold">尊榮信用卡</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#cards" class="hover:text-gold transition">極致現金回饋黑金卡</a></li>
+                    <li><a href="#cards" class="hover:text-gold transition">環球無限極致哩程卡</a></li>
+                    <li><a href="#cards" class="hover:text-gold transition">數位饗宴御璽黑卡</a></li>
+                    <li><a href="#rewards-calc" class="hover:text-gold transition">智能回饋試算機</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-gold">私人保險服務</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#insurance" class="hover:text-gold transition">高端醫療健康保障</a></li>
+                    <li><a href="#insurance" class="hover:text-gold transition">頂級海外旅遊平安險</a></li>
+                    <li><a href="#insurance" class="hover:text-gold transition">家族信託與資產傳承</a></li>
+                    <li><a href="#insurance" class="hover:text-gold transition">極速理賠綠色通道</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-gold">私人管家服務</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#member-center" class="hover:text-gold transition">會員中心與點數兌換</a></li>
+                    <li><a href="#" class="hover:text-gold transition">全球機場貴賓室導覽</a></li>
+                    <li><a href="#" class="hover:text-gold transition">24H 專屬管家專線</a></li>
+                    <li><a href="#" class="hover:text-gold transition">隱私權政策與條款</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-gold/10 text-center text-xs text-slate-500">
+            &copy; 2026 APEX PEAK Private Banking Group 版權所有. 保留所有權利。
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Dark Mode Toggle (Locked to luxury Dark by default)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            showNotification('APEX PEAK 尊榮黑金模式已全面啟動');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Notification Helper
+        function showNotification(message) {
+            const box = document.getElementById('notification-box');
+            const text = document.getElementById('notification-text');
+            text.innerText = message;
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('hidden');
+            }, 3500);
+        }
+
+        // Card Filter Logic
+        const filterBtns = document.querySelectorAll('.card-filter-btn');
+        const cardItems = document.querySelectorAll('.credit-card-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-gradient-to-r', 'from-gold', 'to-gold-dark', 'text-slate-950');
+                    b.classList.add('bg-slate-900', 'border', 'border-gold/30', 'text-slate-300');
+                });
+                btn.classList.add('bg-gradient-to-r', 'from-gold', 'to-gold-dark', 'text-slate-950');
+                btn.classList.remove('bg-slate-900', 'border', 'border-gold/30', 'text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+                cardItems.forEach(card => {
+                    const tags = card.getAttribute('data-tags');
+                    if (filter === 'all' || tags.includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Compare Checkboxes & Floating Bar
+        const compareCheckboxes = document.querySelectorAll('.compare-checkbox');
+        const compareBar = document.getElementById('compare-bar');
+        const compareCount = document.getElementById('compare-count');
+        let selectedCards = [];
+
+        compareCheckboxes.forEach(chk => {
+            chk.addEventListener('change', () => {
+                selectedCards = Array.from(compareCheckboxes)
+                    .filter(c => c.checked)
+                    .map(c => c.value);
+
+                if (selectedCards.length > 0) {
+                    compareBar.classList.remove('hidden');
+                    compareCount.innerText = `已選擇 ${selectedCards.length} 張卡片 (最多 3 張)`;
+                } else {
+                    compareBar.classList.add('hidden');
+                }
+
+                if (selectedCards.length > 3) {
+                    showNotification('最多同時比較 3 張卡片');
+                    chk.checked = false;
+                    selectedCards.pop();
+                }
+            });
+        });
+
+        function clearCompare() {
+            compareCheckboxes.forEach(c => c.checked = false);
+            selectedCards = [];
+            compareBar.classList.add('hidden');
+        }
+
+        function openCompareModal() {
+            if (selectedCards.length === 0) {
+                showNotification('請先勾選至少一張卡片進行比較');
+                return;
+            }
+            showNotification(`正在載入 ${selectedCards.length} 張頂級黑金卡的詳細權益對比...`);
+        }
+
+        // Apply Modal Logic
+        function openApplyModal(cardName) {
+            document.getElementById('modal-card-title').innerText = `線上申辦：${cardName}`;
+            document.getElementById('apply-modal').classList.remove('hidden');
+        }
+
+        function closeApplyModal() {
+            document.getElementById('apply-modal').classList.add('hidden');
+        }
+
+        function submitApplyForm(e) {
+            e.preventDefault();
+            closeApplyModal();
+            showNotification('尊榮申辦申請已成功送出！私人理財顧問將於 2 小時內與您聯繫。');
+        }
+
+        // Redeem Modal Logic
+        function openRedeemModal() {
+            document.getElementById('redeem-modal').classList.remove('hidden');
+        }
+
+        function closeRedeemModal() {
+            document.getElementById('redeem-modal').classList.add('hidden');
+        }
+
+        function confirmRedeem() {
+            closeRedeemModal();
+            showNotification('兌換申請已完成！私人管家已為您處理相關禮遇。');
+        }
+
+        // Rewards Calculator Logic
+        function calculateRewards() {
+            const domestic = parseFloat(document.getElementById('calc-domestic').value) || 0;
+            const overseas = parseFloat(document.getElementById('calc-overseas').value) || 0;
+            const online = parseFloat(document.getElementById('calc-online').value) || 0;
+
+            const cashReward = (domestic * 0.03) + (overseas * 0.06) + (online * 0.07);
+            const milesReward = Math.round((domestic / 25) + (overseas / 12) + (online / 15));
+
+            if (overseas > domestic && overseas > online) {
+                document.getElementById('best-card-name').innerText = '環球無限極致哩程卡';
+                document.getElementById('best-card-desc').innerText = '針對高海外消費設計，頭等艙哩程累積速度極快！';
+                document.getElementById('best-card-reward').innerText = `${milesReward} 哩程 / 月`;
+            } else if (online > domestic) {
+                document.getElementById('best-card-name').innerText = '數位饗宴御璽黑卡';
+                document.getElementById('best-card-desc').innerText = '專為高端網購與米其林餐飲打造的尊榮回饋卡。';
+                document.getElementById('best-card-reward').innerText = `NT$ ${Math.round(cashReward * 1.2).toLocaleString()}`;
+            } else {
+                document.getElementById('best-card-name').innerText = '極致現金回饋黑金卡';
+                document.getElementById('best-card-desc').innerText = '國內無腦刷 3.0% 無上限，現金直接入帳最尊榮！';
+                document.getElementById('best-card-reward').innerText = `NT$ ${Math.round(cashReward).toLocaleString()}`;
+            }
+            showNotification('AI 私人銀行已為您重新計算最佳回饋組合！');
+        }
+
+        // AI Chatbot Logic
+        function toggleChatbot() {
+            const box = document.getElementById('chatbot-box');
+            box.classList.toggle('hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML += `
+                <div class="flex items-start justify-end space-x-2">
+                    <div class="bg-gold text-slate-950 font-medium p-3 rounded-2xl max-w-[80%]">${msg}</div>
+                </div>
+            `;
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            setTimeout(() => {
+                let reply = '感謝您的提問，尊敬的貴賓。針對您的私人理財需求，建議您可以參考我們的「極致現金回饋黑金卡」或預約專屬理財顧問為您量身規劃資產配置。';
+                if (msg.includes('年費') || msg.includes('黑卡')) {
+                    reply = 'APEX PEAK 尊榮黑金卡享首年免年費，次年透過資產配置或前一年度消費滿額即可享終身免年費禮遇。';
+                } else if (msg.includes('理賠') || msg.includes('保險')) {
+                    reply = '我們提供 15 分鐘極速理賠綠色通道，您可以直接聯繫您的專屬私人理財顧問協助辦理。';
+                }
+
+                messagesContainer.innerHTML += `
+                    <div class="flex items-start space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold text-xs shrink-0">VIP</div>
+                        <div class="bg-slate-900 text-slate-200 p-3 rounded-2xl max-w-[80%] border border-gold/20">${reply}</div>
+                    </div>
+                `;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
